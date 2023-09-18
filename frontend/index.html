@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <title>Hello, world!</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="" />
+    <link rel="icon" href="favicon.png">
+    </head>
+    <body>
+        <h1>Hello, world!</h1>
+        <button onclick=get_items()>Get items</button>
+
+        <input type="number" name="id" value="1">
+        <button onclick=get_item()>Get item</button>
+
+    <script type="text/javascript">
+        async function get_items(){
+            let response = fetch("http://127.0.0.1:8000/items").then(r=>r.json()).then(text => console.log(text));
+        };
+        async function get_item(){
+            let id = document.querySelector("input[name=id]");    
+            let response = fetch(`http://127.0.0.1:8000/items/${id.value}`).then(r=>r.json()).then(text => console.log(text));
+        };
+
+    </script>
+    </body>
+</html>
